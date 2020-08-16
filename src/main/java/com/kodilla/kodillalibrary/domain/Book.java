@@ -19,14 +19,18 @@ public class Book {
     @NotNull
     @Id
     @GeneratedValue
-    private long bookId;
+    private Long bookId;
     @NotNull
     private String bookTitle;
     @NotNull
     private String bookAuthor;
     @NotNull
     private int pubYear;
-    @NotNull
-    @OneToMany(mappedBy = "book")
+    @OneToMany(
+            targetEntity = LibraryStorageEntry.class,
+            mappedBy = "book",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<LibraryStorageEntry> copyList;
 }

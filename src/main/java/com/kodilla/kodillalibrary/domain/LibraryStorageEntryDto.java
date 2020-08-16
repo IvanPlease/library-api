@@ -12,9 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class LibraryStorageEntryDto {
-    private long entryId;
+    private Long entryId;
     private BookDto book;
-    private long copyId;
-    private boolean status;
+    private Long copyId;
+    private Long status;
     private List<RentDto> rentList;
 }

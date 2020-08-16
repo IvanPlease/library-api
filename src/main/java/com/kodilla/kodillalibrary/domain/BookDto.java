@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class BookDto {
-    private long bookId;
+    private Long bookId;
     private String bookTitle;
     private String bookAuthor;
     private int pubYear;

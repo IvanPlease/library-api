@@ -18,7 +18,7 @@ public class Rent {
     @NotNull
     @Id
     @GeneratedValue
-    private long rentId;
+    private Long rentId;
     @NotNull
     @ManyToOne
     @JoinColumn(name = "copyId")
@@ -27,7 +27,6 @@ public class Rent {
     @ManyToOne
     @JoinColumn(name = "readerId")
     private Reader reader;
-    @NotNull
     private Date rentDate;
     private Date returnDate;
 }

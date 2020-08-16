@@ -3,13 +3,13 @@ package com.kodilla.kodillalibrary.domain;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,16 +18,19 @@ public class LibraryStorageEntry {
     @NotNull
     @Id
     @GeneratedValue
-    private long entryId;
+    private Long entryId;
     @ManyToOne
     @NotNull
     @JoinColumn(name = "bookId")
     private Book book;
     @NotNull
-    private long copyId;
+    private Long copyId;
     @NotNull
-    private boolean status;
-    @NotNull
-    @OneToMany(mappedBy = "storageEntry")
+    private Long status;
+    @OneToMany(
+            targetEntity = Rent.class,
+            mappedBy = "storageEntry",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private List<Rent> rentList;
 }

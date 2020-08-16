@@ -3,17 +3,14 @@ package com.kodilla.kodillalibrary.domain;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,14 +19,19 @@ public class Reader {
     @NotNull
     @Id
     @GeneratedValue
-    private long readerId;
+    private Long readerId;
     @NotNull
     private String firstname;
     @NotNull
     private String lastname;
-    @NotNull
     private Date creationDate;
     @NotNull
-    @OneToMany(mappedBy = "reader")
+    @OneToMany(
+            targetEntity = Rent.class,
+            mappedBy = "reader",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Rent> rentList;
+    private boolean blackListed;
 }

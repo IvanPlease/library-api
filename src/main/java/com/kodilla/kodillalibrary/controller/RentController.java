@@ -1,6 +1,8 @@
 package com.kodilla.kodillalibrary.controller;
 
 import com.kodilla.kodillalibrary.domain.RentDto;
+import com.kodilla.kodillalibrary.facade.ReaderFacade;
+import com.kodilla.kodillalibrary.facade.RentFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,23 +16,36 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/v1/rents")
 @RequiredArgsConstructor
 public class RentController {
+
+    private final RentFacade facade;
+
     @GetMapping
-    public List<RentDto> getRents(){
-        return new ArrayList<>();
+    public List<RentDto> getRents() {
+        return facade.fetchAllRents();
     }
+
     @GetMapping(value = "/{rentId}")
-    public List<RentDto> getRent(@PathVariable Long rentId){
-        return new ArrayList<>();
+    public RentDto getRent(@PathVariable Long rentId) {
+        return facade.fetchRentById(rentId);
     }
-    @PutMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public RentDto updateRent(@RequestBody RentDto rentDto){
-        return RentDto.builder().build();
+
+    @PutMapping(value = "/{status}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public RentDto updateRent(@RequestBody RentDto rentDto, @PathVariable boolean status) {
+        return facade.updateRent(rentDto, status);
     }
+
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public RentDto createRent(@RequestBody RentDto rentDto){
-        return RentDto.builder().build();
+    public RentDto createRent(@RequestBody RentDto rentDto) {
+        return facade.createRent(rentDto);
     }
+
     @DeleteMapping(value = "/{rentId}")
-    public void deleteRent(@PathVariable Long rentId){
+    public void deleteRent(@PathVariable Long rentId) {
+        facade.deleteRent(rentId);
+    }
+
+    @PutMapping(value = "/{rentId}/pay")
+    public RentDto payForBook(@PathVariable Long rentId){
+        return facade.payForLostBook(rentId);
     }
 }
