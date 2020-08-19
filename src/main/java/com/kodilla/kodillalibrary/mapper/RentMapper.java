@@ -26,22 +26,10 @@ public interface RentMapper {
     RentDto mapToRentDto(Rent rent);
 
     @Mappings({
-            @Mapping(target = "storageEntry", ignore = true),
-            @Mapping(target = "reader", ignore = true)
-    })
-    RentDto mapToRentDto(FetchedRentDto rentDto);
-
-    @Mappings({
             @Mapping(target = "entryId", source = "storageEntry.id"),
             @Mapping(target = "readerId", source = "reader.id")
     })
     FetchedRentDto mapToFetchedRentDto(Rent rent);
-
-    @Mappings({
-            @Mapping(target = "entryId", source = "storageEntry.id"),
-            @Mapping(target = "readerId", source = "reader.id")
-    })
-    FetchedRentDto mapToFetchedRentDto(RentDto rentDto);
 
     List<Rent> mapFetchedRentDtoListToRentList(List<FetchedRentDto> rentDtoList);
 

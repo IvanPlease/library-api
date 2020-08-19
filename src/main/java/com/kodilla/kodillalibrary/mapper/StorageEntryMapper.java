@@ -13,9 +13,6 @@ public interface StorageEntryMapper {
     @Mapping(target = "rentList", expression = "java(rentMapper.mapFetchedRentDtoListToRentList(storageEntryDto.getRentList()))")
     LibraryStorageEntry mapToLibraryStorageEntry(LibraryStorageEntryDto storageEntryDto);
 
-    @Mapping(target = "book", ignore = true)
-    LibraryStorageEntry mapToLibraryStorageEntry(LibraryStorageEntryBookDto storageEntryDto);
-
     LibraryStorageEntryDto mapToLibraryStorageEntryDto(LibraryStorageEntry storageEntryDto);
 
     @Mapping(target = "book", ignore = true)
