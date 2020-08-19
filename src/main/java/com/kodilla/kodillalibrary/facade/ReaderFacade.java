@@ -1,6 +1,6 @@
 package com.kodilla.kodillalibrary.facade;
 
-import com.kodilla.kodillalibrary.domain.ReaderDto;
+import com.kodilla.kodillalibrary.domain.reader.ReaderDto;
 import com.kodilla.kodillalibrary.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

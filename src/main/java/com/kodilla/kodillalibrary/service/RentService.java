@@ -1,9 +1,9 @@
 package com.kodilla.kodillalibrary.service;
 
-import com.kodilla.kodillalibrary.domain.Rent;
-import com.kodilla.kodillalibrary.domain.RentDto;
+import com.kodilla.kodillalibrary.domain.rent.Rent;
+import com.kodilla.kodillalibrary.domain.rent.RentDto;
 import com.kodilla.kodillalibrary.exception.RentException;
-import com.kodilla.kodillalibrary.mapper.BookMapper;
+import com.kodilla.kodillalibrary.mapper.RentMapper;
 import com.kodilla.kodillalibrary.service.repository.RentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RentService {
     private final RentRepository repository;
-    private final BookMapper mapper;
+    private final RentMapper mapper;
 
     public List<RentDto> getAllRents() {
         return mapper.mapToRentDtoList(repository.findAll());
@@ -29,8 +29,8 @@ public class RentService {
     }
 
     public RentDto updateRent(RentDto rentDto) {
-        if (rentDto.getRentId() != null) {
-            isRentExisting(rentDto.getRentId());
+        if (rentDto.getId() != null) {
+            isRentExisting(rentDto.getId());
         } else {
             throw new RentException(RentException.ERR_RENT_ID_MUST_BE_NOT_NULL_EXCEPTION);
         }
@@ -41,7 +41,7 @@ public class RentService {
     }
 
     public RentDto createRent(RentDto rentDto) {
-        if (rentDto.getRentId() == null || rentDto.getRentId() == 0L) {
+        if (rentDto.getId() == null || rentDto.getId() == 0L) {
             Date curr = new Date();
             rentDto.setRentDate(curr);
             Rent updatedRent = repository.save(mapper.mapToRent(rentDto));

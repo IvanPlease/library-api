@@ -1,6 +1,6 @@
 package com.kodilla.kodillalibrary.facade;
 
-import com.kodilla.kodillalibrary.domain.RentDto;
+import com.kodilla.kodillalibrary.domain.rent.RentDto;
 import com.kodilla.kodillalibrary.exception.ReaderException;
 import com.kodilla.kodillalibrary.exception.RentException;
 import com.kodilla.kodillalibrary.facade.rentlogic.RentLogic;
@@ -29,8 +29,8 @@ public class RentFacade {
 
     public RentDto updateRent(RentDto rentDto, boolean status) {
         Long[] indexes = {
-                rentDto.getStorageEntry().getEntryId(),
-                rentDto.getReader().getReaderId()
+                rentDto.getStorageEntry().getId(),
+                rentDto.getReader().getId()
         };
         logic.updateStatus(indexes, (status) ? 0L : 2L);
         if (status) {
@@ -43,8 +43,8 @@ public class RentFacade {
     public RentDto createRent(RentDto rentDto) {
         if (!rentDto.getReader().isBlackListed()) {
             Long[] indexes = {
-                    rentDto.getStorageEntry().getEntryId(),
-                    rentDto.getReader().getReaderId()
+                    rentDto.getStorageEntry().getId(),
+                    rentDto.getReader().getId()
             };
             logic.updateStatus(indexes, 1L);
             return service.createRent(rentDto);
@@ -55,7 +55,7 @@ public class RentFacade {
 
     public RentDto payForLostBook(Long rentId) {
         RentDto fetchedRentDto = service.getRentById(rentId);
-        logic.payForBook(fetchedRentDto.getReader().getReaderId());
+        logic.payForBook(fetchedRentDto.getReader().getId());
         return service.getRentById(rentId);
     }
 

@@ -1,8 +1,11 @@
 package com.kodilla.kodillalibrary.controller;
 
-import com.kodilla.kodillalibrary.domain.BookDto;
+import com.kodilla.kodillalibrary.domain.book.BookDto;
+import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
 import com.kodilla.kodillalibrary.facade.BookFacade;
+import com.kodilla.kodillalibrary.mapper.RentMapper;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +26,7 @@ public class BookController {
     }
 
     @GetMapping(value = "/{bookId}")
-    public BookDto getBook(@PathVariable Long bookId) {
+    public CreatedBookDto getBook(@PathVariable Long bookId) {
         return facade.fetchBookById(bookId);
     }
 
@@ -33,7 +36,7 @@ public class BookController {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public BookDto createBook(@RequestBody BookDto bookDto) {
+    public CreatedBookDto createBook(@RequestBody CreatedBookDto bookDto) {
         return facade.createBook(bookDto);
     }
 

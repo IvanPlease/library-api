@@ -1,8 +1,9 @@
 package com.kodilla.kodillalibrary.facade;
 
-import com.kodilla.kodillalibrary.domain.BookDto;
-import com.kodilla.kodillalibrary.domain.LibraryStorageEntry;
-import com.kodilla.kodillalibrary.domain.LibraryStorageEntryDto;
+import com.kodilla.kodillalibrary.domain.book.BookDto;
+import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.service.BookService;
 import com.kodilla.kodillalibrary.service.LibraryStorageEntryService;
 import lombok.RequiredArgsConstructor;
@@ -45,9 +46,10 @@ public class LibraryStorageEntryFacade {
     }
 
     public LibraryStorageEntryDto addCopy(Long bookId) {
-        BookDto bookDto = bookService.getBookById(bookId);
-        LibraryStorageEntryDto entry = service.getEntryByBook_BookId(bookDto.getBookId());
-        entry.setCopyId(entry.getCopyId() + 1);
+        CreatedBookDto bookDto = bookService.getBookById(bookId);
+        LibraryStorageEntryDto entry = service.getEntryByBook_BookId(bookDto.getId());
+        entry.setId(null);
+        entry.setCopyId((long) (bookDto.getCopyList().size() + 1));
         return service.createEntry(entry);
     }
 

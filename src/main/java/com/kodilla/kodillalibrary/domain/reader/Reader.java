@@ -1,12 +1,12 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.kodillalibrary.domain.reader;
 
+import com.kodilla.kodillalibrary.domain.rent.Rent;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
+import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class Reader {
     @NotNull
     @Id
     @GeneratedValue
-    private Long readerId;
+    private Long id;
     @NotNull
     private String firstname;
     @NotNull

@@ -1,7 +1,7 @@
 package com.kodilla.kodillalibrary.facade;
 
-import com.kodilla.kodillalibrary.domain.BookDto;
-import com.kodilla.kodillalibrary.domain.LibraryStorageEntry;
+import com.kodilla.kodillalibrary.domain.book.BookDto;
+import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
 import com.kodilla.kodillalibrary.service.BookService;
 import com.kodilla.kodillalibrary.service.LibraryStorageEntryService;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +16,12 @@ import java.util.List;
 public class BookFacade {
 
     private final BookService service;
-    private final LibraryStorageEntryService entryService;
 
     public List<BookDto> fetchAllBooks() {
         return service.getAllBooks();
     }
 
-    public BookDto fetchBookById(Long bookId) {
+    public CreatedBookDto fetchBookById(Long bookId) {
         return service.getBookById(bookId);
     }
 
@@ -30,7 +29,7 @@ public class BookFacade {
         return service.updateBook(bookDto);
     }
 
-    public BookDto createBook(BookDto bookDto) {
+    public CreatedBookDto createBook(CreatedBookDto bookDto) {
         return service.createBook(bookDto);
     }
 

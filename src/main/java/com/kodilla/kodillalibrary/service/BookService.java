@@ -1,23 +1,24 @@
 package com.kodilla.kodillalibrary.service;
 
-import com.kodilla.kodillalibrary.domain.Book;
-import com.kodilla.kodillalibrary.domain.BookDto;
-import com.kodilla.kodillalibrary.domain.LibraryStorageEntry;
+import com.kodilla.kodillalibrary.domain.book.Book;
+import com.kodilla.kodillalibrary.domain.book.BookDto;
+import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntry;
 import com.kodilla.kodillalibrary.exception.BookException;
 import com.kodilla.kodillalibrary.mapper.BookMapper;
 import com.kodilla.kodillalibrary.service.repository.BookRepository;
-import com.kodilla.kodillalibrary.service.repository.LibraryStorageEntryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class BookService {
-    private final LibraryStorageEntryService entryService;
     private final BookRepository repository;
     private final BookMapper mapper;
 
@@ -25,14 +26,14 @@ public class BookService {
         return mapper.mapToBookDtoList(repository.findAll());
     }
 
-    public BookDto getBookById(Long bookId) {
+    public CreatedBookDto getBookById(Long bookId) {
         Book fetchedBook = repository.findById(bookId).orElseThrow(() -> new BookException(BookException.ERR_BOOK_NOT_FOUND_EXCEPTION));
-        return mapper.mapToBookDto(fetchedBook);
+        return mapper.mapToCreatedBookDto(fetchedBook);
     }
 
     public BookDto updateBook(BookDto bookDto) {
-        if (bookDto.getBookId() != null) {
-            isBookExisting(bookDto.getBookId());
+        if (bookDto.getId() != null) {
+            isBookExisting(bookDto.getId());
         } else {
             throw new BookException(BookException.ERR_BOOK_ID_MUST_BE_NOT_NULL_EXCEPTION);
         }
@@ -40,20 +41,17 @@ public class BookService {
         return mapper.mapToBookDto(updatedBook);
     }
 
-    public BookDto createBook(BookDto bookDto) {
-        if (bookDto.getBookId() == null || bookDto.getBookId() == 0L) {
-            Book updatedBook = repository.save(mapper.mapToBook(bookDto));
-            BookDto updatedBookDto = mapper.mapToBookDto(updatedBook);
-            LibraryStorageEntry entry = LibraryStorageEntry.builder()
-                    .copyId(1L)
-                    .book(mapper.mapToBook(bookDto))
-                    .status(0L)
-                    .build();
-            entryService.createEntry(mapper.mapToLibraryStorageEntryDto(entry));
-            return updatedBookDto;
-        } else {
-            throw new BookException(BookException.ERR_BOOK_ID_MUST_BE_NULL_OR_0_EXCEPTION);
-        }
+    public CreatedBookDto createBook(CreatedBookDto createdBookDto) {
+        Book book = mapper.mapToBook(createdBookDto);
+        LibraryStorageEntry storageEntry = LibraryStorageEntry.builder()
+                .copyId(1L)
+                .book(book)
+                .status(0L)
+                .rentList(new ArrayList<>())
+                .build();
+        book.getCopyList().add(storageEntry);
+        Book createdBook = repository.save(book);
+        return mapper.mapToCreatedBookDto(createdBook);
     }
 
     public void deleteBook(Long bookId) {

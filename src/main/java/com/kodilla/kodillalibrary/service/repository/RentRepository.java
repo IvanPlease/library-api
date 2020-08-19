@@ -1,7 +1,6 @@
 package com.kodilla.kodillalibrary.service.repository;
 
-import com.kodilla.kodillalibrary.domain.Reader;
-import com.kodilla.kodillalibrary.domain.Rent;
+import com.kodilla.kodillalibrary.domain.rent.Rent;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

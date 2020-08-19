@@ -1,12 +1,10 @@
 package com.kodilla.kodillalibrary.controller;
 
-import com.kodilla.kodillalibrary.domain.RentDto;
-import com.kodilla.kodillalibrary.facade.ReaderFacade;
+import com.kodilla.kodillalibrary.domain.rent.RentDto;
 import com.kodilla.kodillalibrary.facade.RentFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

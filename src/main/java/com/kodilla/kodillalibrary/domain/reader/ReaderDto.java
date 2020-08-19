@@ -1,9 +1,7 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.kodillalibrary.domain.reader;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.kodilla.kodillalibrary.domain.rent.FetchedRentDto;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -13,10 +11,10 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class ReaderDto {
-    private Long readerId;
+    private Long id;
     private String firstname;
     private String lastname;
     private Date creationDate;
-    private List<RentDto> rentList;
+    private List<FetchedRentDto> rentList;
     private boolean blackListed;
 }

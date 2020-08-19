@@ -1,15 +1,15 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.kodillalibrary.domain.book;
 
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntry;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Books")
@@ -19,11 +19,11 @@ public class Book {
     @NotNull
     @Id
     @GeneratedValue
-    private Long bookId;
+    private Long id;
     @NotNull
-    private String bookTitle;
+    private String title;
     @NotNull
-    private String bookAuthor;
+    private String author;
     @NotNull
     private int pubYear;
     @OneToMany(
@@ -32,5 +32,6 @@ public class Book {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<LibraryStorageEntry> copyList;
+    @Builder.Default
+    private List<LibraryStorageEntry> copyList = new ArrayList<>();
 }

@@ -1,15 +1,15 @@
-package com.kodilla.kodillalibrary.domain;
+package com.kodilla.kodillalibrary.domain.rent;
 
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntry;
+import com.kodilla.kodillalibrary.domain.reader.Reader;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,7 +18,7 @@ public class Rent {
     @NotNull
     @Id
     @GeneratedValue
-    private Long rentId;
+    private Long id;
     @NotNull
     @ManyToOne
     @JoinColumn(name = "copyId")

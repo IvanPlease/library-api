@@ -1,6 +1,7 @@
 package com.kodilla.kodillalibrary.controller;
 
-import com.kodilla.kodillalibrary.domain.LibraryStorageEntryDto;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.facade.LibraryStorageEntryFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class LibraryStorageEntryController {
         return facade.getCopyCount(bookId);
     }
 
-    @GetMapping(value = "/{bookId}/addCopy")
+    @PutMapping(value = "/{bookId}/addCopy")
     public LibraryStorageEntryDto addCopyOfBook(@PathVariable Long bookId){
         return facade.addCopy(bookId);
     }

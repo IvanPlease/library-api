@@ -1,6 +1,6 @@
 package com.kodilla.kodillalibrary.controller;
 
-import com.kodilla.kodillalibrary.domain.ReaderDto;
+import com.kodilla.kodillalibrary.domain.reader.ReaderDto;
 import com.kodilla.kodillalibrary.facade.ReaderFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

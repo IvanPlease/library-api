@@ -1,9 +1,9 @@
 package com.kodilla.kodillalibrary.service;
 
-import com.kodilla.kodillalibrary.domain.Reader;
-import com.kodilla.kodillalibrary.domain.ReaderDto;
+import com.kodilla.kodillalibrary.domain.reader.Reader;
+import com.kodilla.kodillalibrary.domain.reader.ReaderDto;
 import com.kodilla.kodillalibrary.exception.ReaderException;
-import com.kodilla.kodillalibrary.mapper.BookMapper;
+import com.kodilla.kodillalibrary.mapper.ReaderMapper;
 import com.kodilla.kodillalibrary.service.repository.ReaderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReaderService {
     private final ReaderRepository repository;
-    private final BookMapper mapper;
+    private final ReaderMapper mapper;
 
     public List<ReaderDto> getAllReaders() {
         return mapper.mapToReaderDtoList(repository.findAll());
@@ -29,8 +29,8 @@ public class ReaderService {
     }
 
     public ReaderDto updateReader(ReaderDto readerDto) {
-        if (readerDto.getReaderId() != null) {
-            isReaderExisting(readerDto.getReaderId());
+        if (readerDto.getId() != null) {
+            isReaderExisting(readerDto.getId());
         } else {
             throw new ReaderException(ReaderException.ERR_READER_ID_MUST_BE_NOT_NULL_EXCEPTION);
         }
@@ -39,7 +39,7 @@ public class ReaderService {
     }
 
     public ReaderDto createReader(ReaderDto readerDto) {
-        if (readerDto.getReaderId() == null || readerDto.getReaderId() == 0L) {
+        if (readerDto.getId() == null || readerDto.getId() == 0L) {
             Date current = new Date();
             readerDto.setCreationDate(current);
             readerDto.setBlackListed(false);
