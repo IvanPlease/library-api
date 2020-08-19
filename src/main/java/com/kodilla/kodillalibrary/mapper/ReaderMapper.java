@@ -19,9 +19,6 @@ public interface ReaderMapper {
 
     ReaderDto mapToReaderDto(Reader reader);
 
-    @Mapping(target = "rentList", ignore = true)
-    ReaderDto mapToReaderDto(ReaderRentDto reader);
-
     ReaderRentDto mapToReaderRentDto(Reader reader);
 
 

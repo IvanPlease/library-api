@@ -22,21 +22,9 @@ public interface BookMapper {
 
     BookDto mapToBookDto(Book book);
 
-    BookDto mapToBookDto(CreatedBookDto book);
-
-    @Mapping(target = "copyList", ignore = true)
-    BookDto mapToBookDto(StorageBookDto bookDto);
-
     CreatedBookDto mapToCreatedBookDto(Book book);
 
-    CreatedBookDto mapToCreatedBookDto(BookDto book);
-
-    @Mapping(target = "copyList", ignore = true)
-    CreatedBookDto mapToCreatedBookDto(StorageBookDto book);
-
     StorageBookDto mapToStorageBookDto(Book book);
-
-    StorageBookDto mapToStorageBookDto(BookDto book);
 
     List<BookDto> mapToBookDtoList(List<Book> bookDto);
 }
