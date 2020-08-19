@@ -12,6 +12,8 @@ import java.util.List;
 public interface LibraryStorageEntryRepository extends CrudRepository<LibraryStorageEntry, Long> {
     @Override
     List<LibraryStorageEntry> findAll();
+
     List<LibraryStorageEntry> findAllByBook_Id(Long bookId);
+
     List<LibraryStorageEntry> findByBook_Id(Long bookId);
 }

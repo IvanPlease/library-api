@@ -3,8 +3,10 @@ package com.kodilla.kodillalibrary.domain.storage;
 import com.kodilla.kodillalibrary.domain.book.Book;
 import com.kodilla.kodillalibrary.domain.rent.Rent;
 import com.sun.istack.NotNull;
-import lombok.*;
-import net.bytebuddy.implementation.bind.annotation.Default;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;

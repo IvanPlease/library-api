@@ -3,7 +3,6 @@ package com.kodilla.kodillalibrary.facade;
 import com.kodilla.kodillalibrary.domain.book.BookDto;
 import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
 import com.kodilla.kodillalibrary.service.BookService;
-import com.kodilla.kodillalibrary.service.LibraryStorageEntryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

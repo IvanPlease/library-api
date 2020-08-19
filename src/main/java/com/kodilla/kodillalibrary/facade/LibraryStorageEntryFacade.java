@@ -1,8 +1,6 @@
 package com.kodilla.kodillalibrary.facade;
 
-import com.kodilla.kodillalibrary.domain.book.BookDto;
 import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
-import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
 import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.service.BookService;
 import com.kodilla.kodillalibrary.service.LibraryStorageEntryService;

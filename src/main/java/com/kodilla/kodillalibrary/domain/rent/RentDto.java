@@ -1,8 +1,11 @@
 package com.kodilla.kodillalibrary.domain.rent;
 
-import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.domain.reader.ReaderRentDto;
-import lombok.*;
+import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 

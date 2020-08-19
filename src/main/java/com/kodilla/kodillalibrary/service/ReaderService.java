@@ -50,13 +50,13 @@ public class ReaderService {
         }
     }
 
-    public void changeBlacklistStatus(Long readerId, boolean status){
-        if(readerId != null){
+    public void changeBlacklistStatus(Long readerId, boolean status) {
+        if (readerId != null) {
             isReaderExisting(readerId);
-        }else {
+        } else {
             throw new ReaderException(ReaderException.ERR_READER_ID_MUST_BE_NOT_NULL_EXCEPTION);
         }
-        Reader fetchedReader = repository.findById(readerId).orElseThrow(()-> new ReaderException(ReaderException.ERR_READER_NOT_FOUND_EXCEPTION));
+        Reader fetchedReader = repository.findById(readerId).orElseThrow(() -> new ReaderException(ReaderException.ERR_READER_NOT_FOUND_EXCEPTION));
         fetchedReader.setBlackListed(status);
         repository.save(fetchedReader);
     }

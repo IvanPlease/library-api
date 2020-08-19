@@ -1,6 +1,5 @@
 package com.kodilla.kodillalibrary.controller;
 
-import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
 import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.facade.LibraryStorageEntryFacade;
 import lombok.RequiredArgsConstructor;
@@ -44,17 +43,17 @@ public class LibraryStorageEntryController {
     }
 
     @PutMapping(value = "/{entryId}/{status}")
-    public LibraryStorageEntryDto changeStatus(@PathVariable Long entryId, @PathVariable Long status){
+    public LibraryStorageEntryDto changeStatus(@PathVariable Long entryId, @PathVariable Long status) {
         return facade.changeStatus(entryId, status);
     }
 
     @GetMapping(value = "/{bookId}/count")
-    public int getCopyCount(@PathVariable Long bookId){
+    public int getCopyCount(@PathVariable Long bookId) {
         return facade.getCopyCount(bookId);
     }
 
     @PutMapping(value = "/{bookId}/addCopy")
-    public LibraryStorageEntryDto addCopyOfBook(@PathVariable Long bookId){
+    public LibraryStorageEntryDto addCopyOfBook(@PathVariable Long bookId) {
         return facade.addCopy(bookId);
     }
 

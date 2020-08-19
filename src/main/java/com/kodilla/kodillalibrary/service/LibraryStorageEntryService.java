@@ -1,7 +1,6 @@
 package com.kodilla.kodillalibrary.service;
 
 import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntry;
-import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
 import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
 import com.kodilla.kodillalibrary.exception.EntryException;
 import com.kodilla.kodillalibrary.mapper.StorageEntryMapper;

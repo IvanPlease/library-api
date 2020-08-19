@@ -2,11 +2,12 @@ package com.kodilla.kodillalibrary.domain.reader;
 
 import com.kodilla.kodillalibrary.domain.rent.Rent;
 import com.sun.istack.NotNull;
-import lombok.*;
-import net.bytebuddy.implementation.bind.annotation.Default;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.List;
 

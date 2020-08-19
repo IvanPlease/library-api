@@ -3,9 +3,7 @@ package com.kodilla.kodillalibrary.controller;
 import com.kodilla.kodillalibrary.domain.book.BookDto;
 import com.kodilla.kodillalibrary.domain.book.CreatedBookDto;
 import com.kodilla.kodillalibrary.facade.BookFacade;
-import com.kodilla.kodillalibrary.mapper.RentMapper;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

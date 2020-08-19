@@ -1,9 +1,9 @@
 package com.kodilla.kodillalibrary.domain.book;
 
-import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryBookDto;
-import lombok.*;
-
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data

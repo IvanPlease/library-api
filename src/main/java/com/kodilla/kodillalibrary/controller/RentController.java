@@ -43,7 +43,7 @@ public class RentController {
     }
 
     @PutMapping(value = "/{rentId}/pay")
-    public RentDto payForBook(@PathVariable Long rentId){
+    public RentDto payForBook(@PathVariable Long rentId) {
         return facade.payForLostBook(rentId);
     }
 }

@@ -1,7 +1,10 @@
 package com.kodilla.kodillalibrary.domain.book;
 
 import com.kodilla.kodillalibrary.domain.storage.LibraryStorageEntryDto;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
