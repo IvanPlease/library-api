@@ -20,7 +20,7 @@ import java.util.List;
 public class Book {
     @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     private String title;
