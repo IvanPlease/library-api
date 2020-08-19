@@ -19,7 +19,7 @@ import java.util.List;
 public class LibraryStorageEntry {
     @NotNull
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @ManyToOne
     @NotNull

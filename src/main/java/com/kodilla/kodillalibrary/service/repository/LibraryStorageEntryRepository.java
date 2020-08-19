@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
 @Repository
 public interface LibraryStorageEntryRepository extends CrudRepository<LibraryStorageEntry, Long> {
     @Override

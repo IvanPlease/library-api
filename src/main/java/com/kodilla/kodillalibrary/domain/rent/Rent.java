@@ -19,7 +19,7 @@ import java.util.Date;
 public class Rent {
     @NotNull
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @NotNull
     @ManyToOne
