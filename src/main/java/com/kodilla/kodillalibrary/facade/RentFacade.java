@@ -41,7 +41,7 @@ public class RentFacade {
     }
 
     public RentDto createRent(RentDto rentDto) {
-        if (!rentDto.getReader().isBlackListed()) {
+        if (!rentDto.getReader().isBlacklisted()) {
             Long[] indexes = {
                     rentDto.getStorageEntry().getId(),
                     rentDto.getReader().getId()

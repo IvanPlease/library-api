@@ -25,7 +25,8 @@ public class Reader {
     private String firstname;
     @NotNull
     private String lastname;
-    private Date creationDate;
+    @Builder.Default
+    private Date creationDate = new Date();
     @NotNull
     @OneToMany(
             targetEntity = Rent.class,
@@ -34,5 +35,5 @@ public class Reader {
             fetch = FetchType.LAZY
     )
     private List<Rent> rentList;
-    private boolean blackListed;
+    private boolean blacklisted;
 }

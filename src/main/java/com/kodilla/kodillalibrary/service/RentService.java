@@ -42,8 +42,6 @@ public class RentService {
 
     public RentDto createRent(RentDto rentDto) {
         if (rentDto.getId() == null || rentDto.getId() == 0L) {
-            Date curr = new Date();
-            rentDto.setRentDate(curr);
             Rent updatedRent = repository.save(mapper.mapToRent(rentDto));
             return mapper.mapToRentDto(updatedRent);
         } else {

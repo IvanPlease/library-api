@@ -29,6 +29,7 @@ public class Rent {
     @ManyToOne
     @JoinColumn(name = "readerId")
     private Reader reader;
-    private Date rentDate;
+    @Builder.Default
+    private Date rentDate = new Date();
     private Date returnDate;
 }

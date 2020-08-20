@@ -16,5 +16,5 @@ public class ReaderRentDto {
     private String firstname;
     private String lastname;
     private Date creationDate;
-    private boolean blackListed;
+    private boolean blacklisted;
 }

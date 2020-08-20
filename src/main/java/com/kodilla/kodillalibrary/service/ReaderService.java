@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,9 +39,7 @@ public class ReaderService {
 
     public ReaderDto createReader(ReaderDto readerDto) {
         if (readerDto.getId() == null || readerDto.getId() == 0L) {
-            Date current = new Date();
-            readerDto.setCreationDate(current);
-            readerDto.setBlackListed(false);
+            readerDto.setBlacklisted(false);
             Reader updatedReader = repository.save(mapper.mapToReader(readerDto));
             return mapper.mapToReaderDto(updatedReader);
         } else {
@@ -57,7 +54,7 @@ public class ReaderService {
             throw new ReaderException(ReaderException.ERR_READER_ID_MUST_BE_NOT_NULL_EXCEPTION);
         }
         Reader fetchedReader = repository.findById(readerId).orElseThrow(() -> new ReaderException(ReaderException.ERR_READER_NOT_FOUND_EXCEPTION));
-        fetchedReader.setBlackListed(status);
+        fetchedReader.setBlacklisted(status);
         repository.save(fetchedReader);
     }
 

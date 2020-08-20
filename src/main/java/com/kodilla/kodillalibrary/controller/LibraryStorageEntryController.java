@@ -32,11 +32,6 @@ public class LibraryStorageEntryController {
         return facade.updateEntry(libraryStorageEntryDto);
     }
 
-    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public LibraryStorageEntryDto createCopy(@RequestBody LibraryStorageEntryDto libraryStorageEntryDto) {
-        return facade.createEntry(libraryStorageEntryDto);
-    }
-
     @DeleteMapping(value = "/{entryId}")
     public void deleteCopy(@PathVariable Long entryId) {
         facade.deleteEntry(entryId);
